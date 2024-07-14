@@ -1,29 +1,59 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #f8f9fa;
     margin: 0;
-    background-color: #f0f0f0;
+    padding: 0;
 }
 
 .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
     text-align: center;
 }
 
-button {
-    font-size: 1.5rem;
-    padding: 10px 20px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    transition: background-color 0.3s ease;
+h1 {
+    font-size: 2rem;
+    color: #333;
 }
 
-button:hover {
+.job-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.job-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.job-item a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.job-item a:hover {
+    text-decoration: underline;
+}
+
+.load-more {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.load-more:hover {
     background-color: #0056b3;
 }
 
+.hidden {
+    display: none;
+}
