@@ -1,25 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const redLight = document.getElementById('redLight');
-    const yellowLight = document.getElementById('yellowLight');
-    const greenLight = document.getElementById('greenLight');
+    const newTaskInput = document.getElementById('newTask');
+    const submitTaskButton = document.getElementById('submitTask');
+    const taskList = document.getElementById('taskList');
 
-    function switchLight(lightElement) {
-        redLight.classList.remove('active');
-        yellowLight.classList.remove('active');
-        greenLight.classList.remove('active');
-        lightElement.classList.add('active');
+    function addTask() {
+        const taskText = newTaskInput.value.trim();
+        if (taskText === '') {
+            return;
+        }
+
+        const taskItem = document.createElement('li');
+        const taskTextNode = document.createTextNode(taskText);
+        const deleteButton = document.createElement('button');
+
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => {
+            taskList.removeChild(taskItem);
+        });
+
+        taskItem.appendChild(taskTextNode);
+        taskItem.appendChild(deleteButton);
+        taskList.appendChild(taskItem);
+
+        newTaskInput.value = '';
     }
 
-    function trafficLightSequence() {
-        switchLight(greenLight);
-        setTimeout(() => {
-            switchLight(yellowLight);
-            setTimeout(() => {
-                switchLight(redLight);
-                setTimeout(trafficLightSequence, 4000);
-            }, 500);
-        }, 3000);
-    }
+    submitTaskButton.addEventListener('click', addTask);
 
-    trafficLightSequence();
+    newTaskInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            addTask();
+        }
+    });
 });
